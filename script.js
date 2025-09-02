@@ -137,7 +137,7 @@ function initContactForm() {
 // Typing effect for hero section
 function initTypingEffect() {
     const subtitle = document.querySelector('.hero-subtitle');
-    const text = 'AI Engineer & Machine Learning Specialist';
+    const text = 'Data Scientist & AI Engineer';
     subtitle.innerHTML = '';
     
     let i = 0;
