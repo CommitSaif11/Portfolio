@@ -112,25 +112,32 @@ function initScrollAnimations() {
 
 // Contact form handling
 function initContactForm() {
+    // Initialize EmailJS with your public key, Saif
+    emailjs.init("2xDYko2j3MK8phAMN"); // You'll get this from EmailJS
+    
     const form = document.querySelector('.contact-form');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
         // Get form data
         const formData = new FormData(form);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        const templateParams = {
+            from_name: formData.get('name'),
+            from_email: formData.get('email'),
+            message: formData.get('message'),
+            to_email: 'alamsaif1107@gmail.com'
+        };
         
-        // Simple validation
-        if (!name || !email || !message) {
-            alert('Please fill in all fields.');
-            return;
-        }
-        
-        // Here you would typically send the data to a server
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        form.reset();
+        // Send email using EmailJS
+        emailjs.send('service_1atjo7p', 'template_f7pudbv', templateParams)
+            .then(() => {
+                alert('Thank you for your message! Saif will get back to you soon.');
+                form.reset();
+            })
+            .catch((error) => {
+                alert('Sorry, there was an error sending your message. Please try again.');
+                console.error('Error:', error);
+            });
     });
 }
 
