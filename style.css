@@ -499,22 +499,57 @@ section {
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .project-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
     color: var(--text-secondary);
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+    font-size: 1.5rem;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .project-link:hover {
     color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateY(-3px);
 }
 
-.coming-soon {
-    color: var(--warning-color) !important;
-    font-size: 0.9rem !important;
+.project-link::after {
+    content: 'View Source Code';
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-link:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-link.coming-soon::after {
+    content: 'Coming Soon';
 }
 
 /* Certifications Section */
